@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://15d4kbd7usml"]
+
+[ext_resource type="PackedScene" uid="uid://r8vfbtk4n7af" path="res://Models/Flashlight.blend" id="1_p3sga"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fhj1v"]
+height = 0.166298
+radius = 0.02
+
+[node name="Flashlight" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.021403, 0)
+shape = SubResource("CylinderShape3D_fhj1v")
+
+[node name="Flashlight" parent="." instance=ExtResource("1_p3sga")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0736224, 0)
+light_color = Color(0.607843, 0.14902, 0.713726, 1)
+spot_range = 3.90671
+spot_attenuation = 0.0
+spot_angle = 41.5808
+spot_angle_attenuation = 0.0
