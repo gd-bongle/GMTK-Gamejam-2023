@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch223ik5gs5bv"]
+
+[ext_resource type="PackedScene" uid="uid://b8a8ibpkhrdkr" path="res://Scenes/player.tscn" id="1_qyeik"]
+
+[sub_resource type="Environment" id="Environment_sc5bk"]
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.01
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hawex"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sc5bk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_hawex")
+
+[node name="Player" parent="." instance=ExtResource("1_qyeik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.346909, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.846193, 0.532876, 0, -0.532876, 0.846193, 0, 4.678, 5.276)
