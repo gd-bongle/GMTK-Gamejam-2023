@@ -14,15 +14,3 @@ shape = SubResource("CapsuleShape3D_b33d6")
 
 [node name="PC" parent="." instance=ExtResource("2_1bx1r")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.2, 1.388, 0)
-
-[node name="FrontLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.66704, 0.745022, 0, -0.745022, -0.66704, 0, 2.74109, -1.24946)
-light_energy = 0.15
-spot_range = 3.28315
-spot_angle = 33.2408
-
-[node name="BackLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.66309, 0.748539, 0, -0.748539, 0.66309, 0, 2.741, 1.249)
-light_energy = 0.15
-spot_range = 3.28315
-spot_angle = 33.2408
