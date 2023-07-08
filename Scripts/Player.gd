@@ -19,3 +19,24 @@ func _physics_process(delta):
 	set_rotation(Vector3(0, get_rotation().y + SPEED * delta * rot_dir, 0))
 
 	move_and_slide()
+
+func _process(delta):
+	if Input.is_action_just_pressed("rightclick"):
+		var bodies = $PickupArea.get_overlapping_bodies()
+		for b in bodies:
+			if b.is_in_group("pickup"):
+				pickup(b)
+				break;
+				
+func pickup(thing: RigidBody3D):
+	if $Hand.get_child_count() > 0:
+		for c in $Hand.get_children():
+			get_owner().add_child(c)
+			c.set_position(get_position())
+			c.freeze = false
+			
+	thing.get_owner().remove_child(thing)
+	$Hand.add_child(thing)
+	thing.freeze = true
+	thing.set_rotation_degrees(Vector3(180, 0, 0))
+	thing.set_position(Vector3.ZERO)
