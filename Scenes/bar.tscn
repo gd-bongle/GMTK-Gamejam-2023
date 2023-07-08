@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1moonqamm0nn"]
+
+[ext_resource type="Script" path="res://Scripts/Bar.gd" id="1_rfnr2"]
+[ext_resource type="PackedScene" uid="uid://kohg3bajgffs" path="res://Models/bar.blend" id="2_saenm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wqffy"]
+size = Vector3(1, 0.971103, 0.334728)
+
+[node name="Bar" type="RigidBody3D" groups=["pickup"]]
+script = ExtResource("1_rfnr2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48665, -0.124052)
+shape = SubResource("BoxShape3D_wqffy")
+
+[node name="bar" parent="." instance=ExtResource("2_saenm")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

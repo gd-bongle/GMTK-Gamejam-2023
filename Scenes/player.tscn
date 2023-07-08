@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wk7al"]
 [ext_resource type="PackedScene" uid="uid://cp8s8nssp163c" path="res://Models/PC.blend" id="2_1bx1r"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b33d6"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wyvc3"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g41u1"]
 height = 2.34692
@@ -14,7 +14,7 @@ script = ExtResource("1_wk7al")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.708333, 0)
-shape = SubResource("CapsuleShape3D_b33d6")
+shape = SubResource("CylinderShape3D_wyvc3")
 
 [node name="PickupArea" type="Area3D" parent="."]
 
@@ -29,6 +29,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.713402, -0.904774)
 
 [node name="PC" parent="Holder" instance=ExtResource("2_1bx1r")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.2, 1.388, 0)
+
+[node name="Drop" type="Node3D" parent="Holder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34609, 1.20372)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

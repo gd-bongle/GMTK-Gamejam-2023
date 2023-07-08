@@ -3,8 +3,12 @@ extends CharacterBody3D
 const SPEED = 8.0
 
 var tween
+var held_item
 
 func _physics_process(delta):
+	
+	if not is_on_floor():
+		velocity.y -= SPEED * delta
 	
 	var cam_rot = (1.0 if Input.is_action_pressed("z") else 0.0) - (1.0 if Input.is_action_pressed("c") else 0.0)
 	
@@ -22,42 +26,43 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if input_dir.length() > 0.95:
-		if tween:
-			tween.kill()
-		tween = create_tween()
-		tween.tween_method($Holder.set_rotation, $Holder.get_rotation(), transform.basis * Vector3(0, atan2(-velocity.z, velocity.x), 0), .1)
-	else:
-		if tween:
-			tween.stop()
+	if (velocity.length() > 0):
+		var look = position + velocity
+		$Holder.look_at(Vector3(look.x, 0, look.z))
+	
 	move_and_slide()
+	apply_floor_snap()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("rightclick"):
 		var bodies = $PickupArea.get_overlapping_bodies()
 		for b in bodies:
-			if b.is_in_group("pickup") and !$Holder/Hand.get_children().has(b):
+			if b and b.is_in_group("pickup") and !$Holder/Hand.get_children().has(b):
 				pickup(b)
 				break;
+	elif Input.is_action_just_pressed("leftclick") and held_item and held_item.has_method("activate"):
+		var bodies = $PickupArea.get_overlapping_bodies()
+		for b in bodies:
+			held_item.activate(b)
 				
 	if Input.is_action_just_pressed("x"):
 		var bodies = $PickupArea.get_overlapping_bodies()
 		for b in bodies:
-			if b.is_in_group("pressable"):
+			if b.has_method("press"):
 				b.press()
 				
 func pickup(thing: RigidBody3D):
 	if $Holder/Hand.get_child_count() > 0:
 		for c in $Holder/Hand.get_children():
-			get_owner().add_child(c)
-			c.set_position(get_position())
+			c.reparent(get_owner())
+			c.set_position($Holder/Drop.get_position())
 			c.freeze = false
 			
-	thing.get_owner().remove_child(thing)
-	$Holder/Hand.add_child(thing)
+	thing.reparent($Holder/Hand)
 	thing.freeze = true
 	thing.set_rotation_degrees(Vector3(180, 0, 0))
 	thing.set_position(Vector3.ZERO)
+	held_item = thing
 
 func kill():
 	print("owie!")

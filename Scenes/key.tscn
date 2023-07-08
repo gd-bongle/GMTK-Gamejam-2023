@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://buw6jrpn14jvj"]
+
+[ext_resource type="Script" path="res://Scripts/Key.gd" id="1_ms8mw"]
+[ext_resource type="PackedScene" uid="uid://dr4o758yhe6gg" path="res://Models/key.blend" id="2_enkwf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lp2yk"]
+size = Vector3(0.982509, 0.467117, 0.0933443)
+
+[node name="Key" type="RigidBody3D" groups=["pickup"]]
+freeze = true
+script = ExtResource("1_ms8mw")
+
+[node name="key" parent="." instance=ExtResource("2_enkwf")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0.00466019, 0, 0.325145)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000725836, -0.00580247, 0.207729)
+shape = SubResource("BoxShape3D_lp2yk")
