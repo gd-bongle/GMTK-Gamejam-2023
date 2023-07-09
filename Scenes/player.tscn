@@ -1,16 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8a8ibpkhrdkr"]
+[gd_scene load_steps=7 format=3 uid="uid://b8a8ibpkhrdkr"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_wk7al"]
 [ext_resource type="PackedScene" uid="uid://cp8s8nssp163c" path="res://Models/PC.blend" id="2_1bx1r"]
 [ext_resource type="AudioStream" uid="uid://cbnimdpc28b6h" path="res://SFX/Death.wav" id="3_4yq3t"]
 [ext_resource type="AudioStream" uid="uid://cschyb2s85pua" path="res://SFX/pickUpItem.wav" id="4_ikwjj"]
-[ext_resource type="AudioStream" uid="uid://c2q0xe3kef40j" path="res://SFX/buttonPushed.wav" id="5_g3pmk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g7pve"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g41u1"]
 height = 2.34692
-radius = 1.09816
+radius = 1.70129
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_wk7al")
@@ -48,6 +47,3 @@ stream = ExtResource("3_4yq3t")
 [node name="Item" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ikwjj")
 volume_db = -7.633
-
-[node name="Button" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_g3pmk")

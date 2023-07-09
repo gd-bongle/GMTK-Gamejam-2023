@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bt8vwqmevqpse"]
+
+[ext_resource type="FontFile" uid="uid://bbuhhe3t0lxfh" path="res://Models/textures/VcrEas-rX3K.ttf" id="1_fheas"]
+
+[resource]
+font = ExtResource("1_fheas")
+font_size = 100

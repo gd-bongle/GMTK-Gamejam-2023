@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://xoy5duig3lhf" path="res://Models/camp4.blend" id="2_4r12g"]
 [ext_resource type="AudioStream" uid="uid://c0bs6vdkd834o" path="res://SFX/success!.wav" id="2_abjrl"]
 [ext_resource type="PackedScene" uid="uid://b8a8ibpkhrdkr" path="res://Scenes/player.tscn" id="3_l26ss"]
-[ext_resource type="AudioStream" uid="uid://dxqigpyav2kls" path="res://Music/workingInTheNight.wav" id="3_r7u7o"]
+[ext_resource type="AudioStream" uid="uid://dxqigpyav2kls" path="res://new folders/Music/workingInTheNight.wav" id="3_r7u7o"]
 [ext_resource type="PackedScene" uid="uid://15d4kbd7usml" path="res://Scenes/flashlight.tscn" id="4_0rj7x"]
 [ext_resource type="Script" path="res://Scripts/Generator.gd" id="5_b63eh"]
 [ext_resource type="PackedScene" uid="uid://d1moonqamm0nn" path="res://Scenes/bar.tscn" id="6_uq53l"]
@@ -17,7 +17,7 @@
 [sub_resource type="Environment" id="Environment_sc5bk"]
 ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.01
+ambient_light_energy = 0.03
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hawex"]
 
@@ -34,10 +34,10 @@ size = Vector3(0.870049, 1.71753, 0.856484)
 size = Vector3(1.43664, 3.54708, 1.43123)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y26di"]
-size = Vector3(2, 5.51384, 2.55584)
+size = Vector3(2, 5.51384, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_akir8"]
-size = Vector3(2, 5.53838, 3.69326)
+size = Vector3(2, 5.53838, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8yuoc"]
 height = 5.12001
@@ -127,9 +127,9 @@ shape = SubResource("BoxShape3D_y26di")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="TrailerLights/CollisionShape3D"]
 transform = Transform3D(-1.45228e-08, -0.943194, 0.332243, -4.12283e-08, 0.332243, 0.943194, -1, 0, -4.37114e-08, 1.00906, 2.12322, 0)
-spot_range = 4.39137
+spot_range = 3.29839
 spot_attenuation = 0.0
-spot_angle = 41.4971
+spot_angle = 25.8848
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="TrailerLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.844746, 0, -2.26074)
@@ -137,9 +137,9 @@ shape = SubResource("BoxShape3D_akir8")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="TrailerLights/CollisionShape3D2"]
 transform = Transform3D(-4.37114e-08, -0.943223, 0.332161, 0, 0.332161, 0.943223, -1, 4.12296e-08, -1.45192e-08, 1.009, 2.123, 0)
-spot_range = 4.89905
+spot_range = 3.298
 spot_attenuation = 0.0
-spot_angle = 41.007
+spot_angle = 25.88
 
 [node name="Campfire" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.567109, 0, 1.13422)

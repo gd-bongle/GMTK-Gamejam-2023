@@ -2,7 +2,6 @@ extends Node3D
 
 var pivot
 
-
 func _ready():
 	pivot = $Pivot
 	$BGM.play()
@@ -14,15 +13,13 @@ func _process(delta):
 	pivot.set_rotation(Vector3(0, pivot.get_rotation().y + 5.0 * delta * rot_dir, 0))
 
 func _on_end_button_pressed():
-	var removal = get_children()
-	for f in removal:
-		if f.is_in_group("flashlight") or f.has_method("reveal"):
+	for f in get_children():
+		if f.is_in_group("flashlight"):
 			f.queue_free()
 			
-	$Player/SpotLight3D.queue_free()
-	if $Player/Holder/Hand.get_child(0):
-		$Player/Holder/Hand.get_child(0).queue_free()
-	var tween = create_tween()
-	$Success.play()
+	var tween = get_tree().create_tween()
 	tween.tween_property($WorldEnvironment.environment, "ambient_light_energy", 0, 2.0)
 	tween.tween_callback(get_tree().change_scene_to_file.bind("res://Scenes/Level1.tscn"))
+
+func _on_timer_timeout():
+	$TutorialText.queue_free()
