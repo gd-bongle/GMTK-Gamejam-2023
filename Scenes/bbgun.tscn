@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct1els6kcwify"]
+
+[ext_resource type="Script" path="res://Scripts/bbgun.gd" id="1_kucjk"]
+[ext_resource type="PackedScene" uid="uid://coybp0ncul1o6" path="res://Models/bbgun.blend" id="2_ocal6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kes6h"]
+size = Vector3(3.56114, 0.442421, 0.16898)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nh8tj"]
+height = 11.6932
+radius = 0.101106
+
+[node name="bbgun" type="RigidBody3D" groups=["pickup"]]
+freeze = true
+script = ExtResource("1_kucjk")
+
+[node name="bbgun" parent="." instance=ExtResource("2_ocal6")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.00013113, -0.0366848, 0.779836)
+shape = SubResource("BoxShape3D_kes6h")
+disabled = true
+
+[node name="blast" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blast"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 7.579)
+shape = SubResource("CylinderShape3D_nh8tj")

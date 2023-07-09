@@ -63,10 +63,13 @@ func pickup(thing: RigidBody3D):
 	thing.set_rotation_degrees(Vector3(180, 0, 0))
 	thing.set_position(Vector3.ZERO)
 	held_item = thing
+	$Item.play()
+	
 
 func kill():
 	print("owie!")
+	$Death.play()
 	set_physics_process(false)
 	var dtween = get_tree().create_tween()
-	dtween.tween_property($Holder/PC, "scale", Vector3.ONE * 0.001, 1.0)
+	dtween.tween_property($Holder/PC, "scale", Vector3.ONE * 0.001, 1.5)
 	dtween.tween_callback(get_tree().reload_current_scene)

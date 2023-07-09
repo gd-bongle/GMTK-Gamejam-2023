@@ -11,3 +11,7 @@ func reveal():
 		tween.tween_property($key/Key.get_active_material(0), "emission_energy_multiplier", 1.0, 0.5)
 		freeze = false
 		revealed = true
+
+func activate(body):
+	if body.has_method("open"):
+		body.open()
