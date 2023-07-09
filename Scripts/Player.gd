@@ -50,6 +50,7 @@ func _process(_delta):
 		for b in bodies:
 			if b.has_method("press"):
 				b.press()
+				$Button.play()
 				
 func pickup(thing: RigidBody3D):
 	if $Holder/Hand.get_child_count() > 0:

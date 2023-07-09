@@ -26,3 +26,10 @@ func _on_end_button_pressed():
 	$Success.play()
 	tween.tween_property($WorldEnvironment.environment, "ambient_light_energy", 0, 2.0)
 	tween.tween_callback(get_tree().change_scene_to_file.bind("res://Scenes/Level1.tscn"))
+
+func _physics_process(delta):
+	var collider = $Mirror/RayCast3D.get_collider()
+	if collider and collider.has_method("kill"):
+		collider.kill()
+		
+	$Mirror.rotate_y(PI / 6 * delta)
